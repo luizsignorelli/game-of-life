@@ -21,6 +21,9 @@ Births and deaths happen simultaneously, and the discrete moment at which this h
 # . # -> # # # -> # # #
 # # #    . # .    # # #
 
+. # #    # # .    # # #
+# . # -> # # # -> # # #
+# # .    . # .    # # #
 
 y, x  : 1,1
 y, x-1  : 1,0

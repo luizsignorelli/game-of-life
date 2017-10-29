@@ -8,7 +8,7 @@ data class Cell(private val state: State) {
 
     enum class State {
         ALIVE {
-            override fun tick(cell: Cell, world: List<List<Cell>>): Cell {
+            override fun tick(cell: Cell, world: World): Cell {
                 val aliveCells = cell.aliveNeighbours(world)
                 return when {
                     aliveCells < 2  -> Cell.dead()
@@ -20,7 +20,7 @@ data class Cell(private val state: State) {
             }
         },
         DEAD {
-            override fun tick(cell: Cell, world: List<List<Cell>>): Cell {
+            override fun tick(cell: Cell, world: World): Cell {
                 return when (cell.aliveNeighbours(world)) {
                     3 -> Cell.alive()
                     else -> Cell.dead()
@@ -28,20 +28,18 @@ data class Cell(private val state: State) {
             }
         };
 
-        abstract fun tick(cell: Cell, world: List<List<Cell>>): Cell
+        abstract fun tick(cell: Cell, world: World): Cell
     }
 
     fun alive(): Boolean = state == State.ALIVE
     fun dead() : Boolean = !alive()
 
-    fun tick(world: List<List<Cell>>): Cell {
+    fun tick(world: World): Cell {
         return state.tick(this, world)
     }
 
-    private fun aliveNeighbours(world: List<List<Cell>>): Int {
-        var aliveCells = world.flatten().count { it.alive() }
-        if (this.alive()) aliveCells -= 1
-
-        return aliveCells
+    private fun aliveNeighbours(world: World): Int {
+        return world.aliveNeighboursOf(this)
     }
+
 }

@@ -9,9 +9,9 @@ class CenterCellOnA3x3World {
     fun `an alive center cell dies with 1 alive neighbours`() {
         val centerCell = Cell.alive()
 
-        val world = listOf(listOf(Cell.alive(), Cell.dead(), Cell.dead()),
-                           listOf(Cell.dead(),  centerCell,  Cell.dead()),
-                           listOf(Cell.dead(),  Cell.dead(), Cell.dead()))
+        val world = World(listOf(listOf(Cell.alive(), Cell.dead(), Cell.dead()),
+                                 listOf(Cell.dead(),  centerCell,  Cell.dead()),
+                                 listOf(Cell.dead(),  Cell.dead(), Cell.dead())))
 
         val centerCellAfterTick = centerCell.tick(world)
 
@@ -22,9 +22,9 @@ class CenterCellOnA3x3World {
     fun `an alive center cell dies with 4 alive neighbours`() {
         val centerCell = Cell.alive()
 
-        val world = listOf(listOf(Cell.alive(), Cell.alive(), Cell.alive()),
+        val world = World(listOf(listOf(Cell.alive(), Cell.alive(), Cell.alive()),
                            listOf(Cell.alive(), centerCell,   Cell.alive()),
-                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead()))
+                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead())))
 
         val centerCellAfterTick = centerCell.tick(world)
 
@@ -35,9 +35,9 @@ class CenterCellOnA3x3World {
     fun `an alive center cell lives with 2 alive neighbours`() {
         val centerCell = Cell.alive()
 
-        val world = listOf(listOf(Cell.alive(), Cell.alive(), Cell.dead()),
+        val world = World(listOf(listOf(Cell.alive(), Cell.alive(), Cell.dead()),
                            listOf(Cell.dead(),  centerCell,   Cell.dead()),
-                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead()))
+                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead())))
 
         val centerCellAfterTick = centerCell.tick(world)
 
@@ -48,9 +48,9 @@ class CenterCellOnA3x3World {
     fun `an alive center cell lives with 3 alive neighbours`() {
         val centerCell = Cell.alive()
 
-        val world = listOf(listOf(Cell.alive(), Cell.alive(), Cell.alive()),
+        val world = World(listOf(listOf(Cell.alive(), Cell.alive(), Cell.alive()),
                            listOf(Cell.dead(),  centerCell,   Cell.dead()),
-                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead()))
+                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead())))
 
         val centerCellAfterTick = centerCell.tick(world)
 
@@ -61,9 +61,9 @@ class CenterCellOnA3x3World {
     fun `a dead center cell lives with 3 alive neighbours`() {
         val centerCell = Cell.dead()
 
-        val world = listOf(listOf(Cell.alive(), Cell.alive(), Cell.alive()),
-                listOf(Cell.dead(),  centerCell,   Cell.dead()),
-                listOf(Cell.dead(),  Cell.dead(),  Cell.dead()))
+        val world = World(listOf(listOf(Cell.alive(), Cell.alive(), Cell.alive()),
+                                 listOf(Cell.dead(),  centerCell,   Cell.dead()),
+                                 listOf(Cell.dead(),  Cell.dead(),  Cell.dead())))
 
         val centerCellAfterTick = centerCell.tick(world)
 
@@ -74,9 +74,9 @@ class CenterCellOnA3x3World {
     fun `a dead center cell continue dead with 2 alive neighbours`() {
         val centerCell = Cell.dead()
 
-        val world = listOf(listOf(Cell.alive(), Cell.alive(), Cell.dead()),
-                           listOf(Cell.dead(),  centerCell,   Cell.dead()),
-                           listOf(Cell.dead(),  Cell.dead(),  Cell.dead()))
+        val world = World(listOf(listOf(Cell.alive(), Cell.alive(), Cell.dead()),
+                                 listOf(Cell.dead(),  centerCell,   Cell.dead()),
+                                 listOf(Cell.dead(),  Cell.dead(),  Cell.dead())))
 
         val centerCellAfterTick = centerCell.tick(world)
 
@@ -84,3 +84,4 @@ class CenterCellOnA3x3World {
     }
 
 }
+
